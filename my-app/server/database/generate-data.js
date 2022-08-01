@@ -1,6 +1,5 @@
-
-
-const User = require('./models/user.js');
+const User = require('../models/user.js');
+const Interaction = require('../models/interaction.js');
 
 function populateDatabase() {
     const me = new User({
@@ -14,7 +13,7 @@ function populateDatabase() {
         bio: 'Beginner hooper looking to play more and learn more about the game',
         phoneNumber: '587-123-523',
         gender: 'Male'
-    })
+    });
     const mike = new User({
         firstName: 'Mike',
         lastName: 'Smith',
@@ -39,10 +38,16 @@ function populateDatabase() {
         phoneNumber: '354-242-1234',
         gender: 'Male'
     });
+    const interaction1 = new Interaction({
+        userOneId: '62cce16fbbd30b718df04804',
+        userTwoId: '62cce16fbbd30b718df04803',
+        swiped: true
+    });
 
     me.save();
     mike.save();
     john.save();
+    interaction1.save();
 }
 
 module.exports = populateDatabase;
